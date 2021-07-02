@@ -1,0 +1,18 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/cardList/cardList",
+    "pages/banner/banner",
+    "pages/cardDetail/cardDetail",
+    "pages/cardSchedule/cardSchedule",
+    "pages/doorHref/doorHref",
+    "pages/wxChatapp/wxChatapp",
+    "pages/allCard/allCard"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "交通银行信用卡",
+    "navigationBarTextStyle":"black"
+  }
+}

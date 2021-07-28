@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #parent {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            background: green;
+            line-height: 3;
+        }
+
+        #child {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background: orange;
+        }
+
+        .box {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            border: 1px solid red;
+            display: flex;
+        }
+
+        .leftcontent,
+        .rightcontent {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            flex: 1;
+            background: red;
+        }
+
+        .middlecontent {
+            flex: auto;
+
+        }
+
+        .aaa::after {
+            width: 10px;
+            height: 10px;
+            content: "\f002"
+        }
+
+        .warp {
+            position: relative;
+            width: 150px;
+            overflow: hidden;
+        }
+
+        .warp p {
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        .scroll {
+            color: #000000;
+            font-size: 14px;
+            padding: 5px;
+        }
+
+        p:hover {
+            animation: move 1.5s infinite alternate linear;
+            -webkit-animation: move 1.5s infinite alternate linear;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            /* calc中需要带空格 */
+            100% {
+                transform: translate(calc(-100% + 150px), 0);
+            }
+        }
+
+        #sec {
+            background: #f00;
+            overflow: hidden;
+        }
+
+        #sec .child {
+            background: #0f0;
+            height: 100px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="" onerror="alert(1)"/>
+    <div id="sec">
+        <div class="child">
+            asd
+        </div>
+    </div>
+    <div class="warp">
+        <p title="我的宽度是正常宽度">我的宽度是正常宽度</p>
+        <p class="scroll" title="我的宽度是溢出了小部分">我的宽度是溢出了啊实打实大所多小部分</p>
+        <p class="scroll" title="我的宽度是溢出了溢出了很大一部分">我的宽度是溢出了asdasdasdasdasd溢出了很大一部分</p>
+    </div>
+    <div id="parent">
+        父元素
+        <div id="child">
+            子元素
+        </div>
+    </div>
+    <div class="box">
+        <div class="leftcontent">
+            aaa
+        </div>
+        <div class="middlecontent">
+            <i class="aaa"></i> 134
+        </div>
+        <div class="rightcontent">
+            bbb
+        </div>
+    </div>
+    <script type="text/javascript">
+        var _script = document.createElement("script");
+        _script.type = "text/javascript";
+        _script.src = "jquery.js";
+        document.head.appendChild(_script);
+
+        // let parent = document.getElementById("parent");
+        // let child = document.getElementById("child");
+
+        // document.body.addEventListener("click", function (e) {
+        //     console.log("click body");
+        // }, false);
+
+        // parent.addEventListener("click", function (e) {
+        //    console.log("click parent");
+        //      e.stopPropagation();
+        // }, false);
+
+        // child.addEventListener("click", function (e) {
+        //     console.log("click clild");
+        // }, false);
+        // window.addEventListener('onload', function(e) { 
+        //     $("#child").html('123');
+        // })
+        window.onload = function () {
+            $("#child").html('123');
+            console.log($("#sec").height());
+        }
+        // window.addEventListener('pageshow', function(e) {
+        //     console.log(window.addEventListener)
+        //     $("#child").html('123');
+        // })
+        // document.getElementById("imgID").onload = function () {
+        //     //do something
+        // }
+    </script>
+</body>
+
+</html>

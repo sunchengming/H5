@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<style>
+  #div {
+    width: 300px;
+    height: auto;
+    /* background-color: blanchedalmond; */
+    border: 1px salmon solid;
+    word-break: break-all;
+  }
+  .style{
+    border-style: none;
+    resize: none;
+  }
+</style>
+
+<body>
+  <!-- <div contenteditable="true" id="div"></div> -->
+  <textarea name="" cols="30" rows="2" class="style" placeholder="123" maxlength="50"></textarea>
+  <div class="container">
+    请输入内容：<input type="text" id="put" maxlength="10" value="" />
+    <div id="div"></div>
+  </div>
+  <script>
+    var arr = ["123", "124", "234", "阿松大"];
+    arr.map((todo) => {
+      console.log(`${todo}\n\n`)
+    })
+    window.onload = function () {
+      var put1 = document.getElementById("put");
+      var div1 = document.getElementById("div");
+      put1.onkeyup = function () {
+        div1.innerText = put1.value;
+      }
+    }
+
+    // const editDiv = document.getElementById("div");
+
+    // editDiv.addEventListener("keydown", (e) => {
+    //   limitTextLength(e);
+    // });
+
+    // editDiv.addEventListener('click',()=>{
+    //   editDiv.setAttribute("contenteditable", "true");
+    //   editDiv.focus()
+    // })
+
+    // function limitTextLength(e) {
+    //   let textLength = editDiv.innerText.length;
+
+    //   let allowKey = [8, 13, 37, 38, 39, 40]; // 上下左右 回车 删除
+
+    //   let maxLength = 50;
+
+    //   if (textLength >= maxLength && allowKey.indexOf(e.keyCode) === -1) {
+    //     editDiv.setAttribute("contenteditable", "false");
+    //   }
+    // }
+  </script>
+</body>
+
+</html>

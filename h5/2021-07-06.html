@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+        }
+
+        .zoom {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        .in {
+            background-color: aliceblue;
+        }
+        .container{
+            position: relative;
+        }
+        #put{
+            width: 100px;
+            height: 20px;
+            border: none;
+            position: relative;
+            z-index: 20;
+        }
+        #div {
+            position: absolute;
+            left: 99px;
+            top: 0;
+            z-index: 1;
+            /* border: 1px solid #00F; */
+            height: 40px;
+            width: 100px;
+            word-wrap: break-word;
+            overflow: hidden;
+            cursor: text;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Please input a number between 5 and 10:</p>
+    <input type="text" id="demo">
+    <button type="button" onclick="myFunction()">Test Input</button>
+    <p id="message"></p>
+    <div class="zoom">Click Me</div>
+    <ul>
+        <li>go to store</li>
+        <li>whtch tv</li>
+        <li>go shoping</li>
+    </ul>
+    <script>  
+        const fruit = ['apple','bananas','pear'];
+        const newFruit = ['orange','mongo'];
+        // const aa = fruit.concat(newFruit)
+        // fruit.push(...newFruit);
+        fruit.push.apply(fruit,newFruit)
+        console.log(fruit)
+        const dateFields = [2017,5,7];
+        const data = new Date(...dateFields);
+        console.log(data)
+        // const todos = [...document.querySelectorAll('li')];
+        // const names = todos.map(todo=>todo.textContent);
+        // console.log(names)
+        // const favories = {
+        //     color:["yellow","blue"],
+        //     fruits:["banana",'mango']
+        // };
+        // const shoppingList = ["milk",'sweets',...favories.fruits];
+        // console.log(shoppingList)
+        // const todos = [
+        //     {id:0,name:'go to store1',completed:false},
+        //     {id:1,name:'watch tv2',completed:true},
+        //     {id:2,name:'go shopping3',completed:false},
+        //     {id:3,name:'watch tv4',completed:true},
+        //     {id:4,name:'go shopping5',completed:false},
+        //     {id:5,name:'watch tv6',completed:true},
+        //     {id:6,name:'go shopping7',completed:false}
+        // ];
+        // const id = 1;
+        // const todoIndex = todos.findIndex(todo=>todo.id===id);
+        // const newTodos = [...todos.slice(0,todoIndex),...todos.slice(todoIndex+1,todoIndex.length)];
+        // console.log(todos)
+        // console.log(todoIndex)
+        // console.log(newTodos)
+        // const youngers = ['george','john','thomas'];
+        // const olders = ['James','Adrew','Martin'];
+        // let members = [];
+        // members = members.concat(youngers);
+        // members.push('Mary');
+        // members = members.concat(olders);
+        // es6写法
+        // let members = [...youngers,'123',...olders];
+        // const currentMembers = [...members];
+        // members[0]="sun"
+        // console.log(members)
+        // console.log(currentMembers)
+        // function sum(...number){
+        //     return number.reduce((prev,next)=>prev+next,0)
+        // }
+        // function sum(){
+        //     console.log(arguments)//object
+        //     return Array.from(arguments).reduce((prev,next)=>prev+next,0)
+        // }
+        // console.log(sum(1,2,3,4,10))
+        // ...amounts剩余函数
+        // function coverCurrentcy(rate,...amounts){
+        //     return amounts.map(amout=>amout*rate)
+        // };
+        // console.log(coverCurrentcy(0.5,10,20,4))
+
+        // const numbers = ["one","two","three"];
+        // const [one, four="aaa",three] = numbers;
+        // const [four, ...others] = numbers;
+        // console.log(four,others)
+        // let a = 10;
+        // let b = 20;
+        // [a,b]= [b,a];
+        // console.log(a,b)
+        // const Tom ={
+        //     name:'Tom Jones',
+        //     age:25,
+        //     family:{
+        //         mother:"Norah Jones",
+        //         father:"Richard Jones",
+        //         brother:"Howard Jones",
+        //         sister:"asd"
+        //     }
+        // };
+        // const father = "123";
+        // const { father:f, mother, brother, sister = "have no sister" } = Tom.family;
+        // console.log(sister)
+        // const id = "312214100204151118";
+        // const fan = "I love apple.";
+        // const heading = `${'='.repeat(5)} ${fan} ${'='.repeat(5)}`;
+        // id.startsWith("312");id.endsWith("8");id.includes("312214")
+        // function padder(string,length=25){
+        //     return `${' '.repeat(Math.max(length-string.length))}${string}`
+        // }
+        // const allLi = document.querySelectorAll('li');
+        // const names = Array.from(allLi).map(todo=>todo.textContent);
+        // console.log(names);
+        // function sum(){
+        //     return Array.from(arguments).reduce((prev,cur)=>prev+cur,0)
+        // };
+        // Array.of(1);//console打印是数组[1]
+        // const person = 'Jelly';
+        // const age = 5;
+        // const sentence = `${person} is ${age+5} years old.`;
+        // const template = `
+        //     <div>
+        //         123
+        //     </div>
+        // `.trim();
+        // const Jelly = {
+        //     name:'Jelly',
+        //     date:'2017-05-07',
+        //     todos:[
+        //         {name:"Go to store",completed:false},
+        //         {name:'Watch Movie',completed:true},
+        //         {name:'Running',completed:true}
+        //     ]
+        // };
+        // const template = `
+        //     <ul>
+        //         ${Jelly.todos.map(todo=>`<li>${todo.name} ${todo.completed?'✔':'❌'}</li>`).join('')}
+        //     </ul>
+        // `
+        // document.body.innerHTML += template;
+        // const Person = function(name,points){
+        //     this.name = name;
+        //     this.points = points;
+        // }
+        // const Jelly = new Person('jelly',5);        
+        // Person.prototype.updatePoints = function(){
+        //     this.points++; 
+        //     console.log(this.points)
+        // }
+        // const button = document.querySelector('.zoom');        
+        // button.addEventListener("click",function(){
+        //     this.classList.add('in');
+        //     setTimeout(()=>{
+        //         this.classList.remove('in')
+        //     },2000)
+        // });
+        // const sum = function(){
+        //     return Array.from(arguments).reduce((prevSum, value) => prevSum + value, 0)
+        // }
+        // const sum = (...args)=>{
+        //     return args.reduce((prevSum, value) => prevSum + value,0)
+        // }
+
+        // const numbers = [2,10,4,6,13,61,43];
+        // const double = numbers.map(function(number){
+        //     return number*2;
+        // });
+        // console.log(double);
+        // const double2 = numbers.map((number)=>number*2);
+        // console.log(double2);
+        // const greet = name =>{alert(`Hello ${name}`)};
+        // greet("Jelly");
+
+        // const Jelly = {
+        //     name:"Jelly",
+        //     hobbies:['Coding','Sleeping','Reading'],
+        //     printHobbies:function(){
+        //         var self = this;
+        //         console.log(self);
+        //         this.hobbies.map(function(hobby){
+        //             console.log(`${self.name} loves ${hobby}`)
+        //         })
+        //     }
+        // };
+        // const Jelly = {
+        //     name:"Jelly",
+        //     hobbies:["Coding","Sleeping","Reading"],
+        //     printHobbies:function(){
+        //         this.hobbies.map((hobby)=>console.log(`${this.name} loves ${hobby}`))
+        //     }
+        // };        
+        // Jelly.printHobbies();
+        // const  multiply= (a = 10,b = 3)=>{
+        //     return a*b;
+        // }
+
+        // 本例检测输入变量的值。如果值是错误的，会抛出一个异常（err）异常 (err) 通过 catch 语句捕获并自定义输出错误信息：
+        // throw 语句创建自定义错误
+        // function myFunction() {
+        //     var message, x;
+        //     message = document.getElementById('message');
+        //     message.innerHTML = "";
+        //     x = document.getElementById('demo').value;
+        //     try {
+        //         if (x === "") throw "is Empty";
+        //         if (isNaN(x)) throw "not a number";
+        //         if (x > 10) throw "too high";
+        //         if (x < 5) throw "too low";
+        //     } catch (err) {
+        //         message.innerHTML = "Input " + err;
+        //     }
+        // }
+        // var obj1 = {
+        //     foo: 1,
+        //     get barw() {
+        //         return 2;
+        //     }
+        // };
+
+        // var copy1 = Object.assign({}, obj1);
+        // console.log(copy1); 
+        //     {foo: 1,
+        //     barw: 2
+        // }
+        //   const friuts = ['apples','bananas','orange','mango'];
+        //   for(let [index,friut] of friuts.entries()){
+        //       console.log(`${friut} ranks ${index+1} in my favories friuts`)
+        //   }
+        // function sum(){
+        //     let total = 0;
+        //     for(let num of arguments){
+        //         total+=num;
+        //     }
+        //     console.log(total)
+        //     return total;
+        // };
+        // sum(10,20,12,4901,21);
+        // const lis = document.querySelectorAll('li');
+        // for(let li of lis){
+        //     li.addEventListener('click',function(){
+        //         this.classList.toggle('completed')
+        //     })
+        // }
+        // const fruits = ['apple', 'orange', 'banana', 'mango'];
+        // for(let i=0; i<fruits.length;i++){
+        //     console.log(fruits[i])
+        // };
+        // fruits.forEach(fruit => {
+        //     if (fruit === 'orange') {
+        //        return true
+        //     }
+        //     console.log(fruit);
+        // })
+        // for(let fruit of fruits){
+        //    if(fruit === 'orange'){
+        //        continue;
+        //    }
+        //    console.log(fruit)
+        // }
+        // const fruits = ['apple','banana','orange','mango'];
+        // for(let [index,fruit] of fruits.entries()){
+        //     console.log(`${index} and ${fruit}`)
+        // }
+        // function sum(){
+        //     let total = 0;
+        //     console.log(arguments)
+        //     for(let num of arguments){
+        //         total+=num;
+        //     }
+        //     console.log(total)
+        //     return total;
+        // };
+        // sum(10,20,39,19,13);
+        // const inventory = [
+        //     {name:"orange",quantity:2},
+        //     {name:"apple",quantity:1},
+        //     {name:'banana',quantity:5}
+        // ];
+        // const bananas = inventory.find(fruit=>fruit.name ==='banana');
+        // const bananaIndex = inventory.findIndex(fruit=>fruit.name==='banana');
+        // const isEnough = inventory.some(fruit=>fruit.quantity>2);
+        // const isEnoughall = inventory.every(fruit=>fruit.quantity>3);
+        // console.log(isEnoughall)
+    </script>
+
+</body>
+
+</html>

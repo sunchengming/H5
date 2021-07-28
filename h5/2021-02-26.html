@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* 水平居中
+            行内元素:text-algin:center;
+            块级元素: margin:0 auto;
+            position:absolute; left:50%; transform:translateX(-50%)
+            display:flex; justify-content:center;
+
+            
+            垂直居中
+            设置line-height等于height
+            position:absolute; top:50%; transform:translateY(-50);
+            display:flex; align-items:center;
+            display:table; display:table-cell; vertical-algin:middle;
+
+            1rem是全部的长度相对于更元素的html元素，通常做法是给html元素设置一个字体大小
+            然后其他元素的长度单位为rem
+
+            em字体元素大小的em是相对于父元素字体大小
+
+            vw/vh
+            全程是Viewport Width 和Viewport Height,视图的宽度和高度，相对于屏幕宽度和
+            高度的1%,不过，处理宽度的时候%单位更合适，处理高度的话vh单位更好
+
+            px像素，相对长度单位。像素px是相对于显示屏分辨率而言的
+
+            画一条0.5px的直线
+            height：1px；
+            transform:scale(0.5)
+
+            盒模型的组成，由内向外content，padding，border，margin
+            在ie盒模型中，width表示content+padding+border这三个部分的宽度
+            在标准盒子模型中，width指content部分的宽度
+            box-sizing的使用
+            box-sizing：content-box 是w3c盒子模型
+            box-sizing：border-box 是IE盒子模型
+            box-sizing的默认属性是content-box
+
+            .triangle{
+                width:0;
+                height:0;
+                border-width:100px;
+                border-style:solid;
+                border-color:transparent #0099cc transparent transparent;
+                transform:rotate(90deg);
+            }
+            <div class="triangle"></div> 
+            
+            label标签主要是方便鼠标点击使用，扩大可点击的范围，增强用户操作体验
+
+
+         */
+        * {
+            margin: 0;
+            padding: 0;
+        } 
+
+        .box {
+            width: 500px;
+            height: 300px;
+            margin: auto;
+            position: relative;
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+        }
+
+        .p1 {
+            background: red;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: calc(50% - 50px);
+        }
+
+        .a {
+            width: 0;
+            height: 0;
+            border-width: 100px;
+            border-style: solid;
+            border-color: transparent #0099CC transparent transparent;
+            transform: rotate(90deg);
+        }
+
+        .halfLine{
+            position: relative;
+            width: 100px;
+            height: 1px;
+            background: red;
+            transform: scale(0.5);
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Vue框架基本使用、Vue框架进阶、Vue源码分析 -->
+    <div class="halfLine"></div>
+    <div class="a"></div>
+    <div class="box">
+        <p class="p1">123</p>
+    </div>
+    <a>456</a>
+    <label for="123">456</label>
+    <script>
+        (function(){
+            console.log(0)
+        })();
+    </script>
+</body>
+
+</html>

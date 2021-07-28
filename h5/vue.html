@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue</title>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="demo">
+        <p>原数据{{message}}</p>
+        <p>反转后的数据{{ reversedMessage() }}</p>
+        <p>反转后的数据{{ reverseText }}</p>
+        <button @click='a++'>a加1</button>
+        <p>{{message1}}</p>
+        <button @click="add()">补充货物1</button>
+        <div>总价为：{{price}}</div>
+        <a v-bind:href="'https://www.baidu.com/'">aaa</a>
+        <hr>
+        <input type="text" v-model="val1">
+        <input type="text" v-model.lazy="val2" @change="show">
+        <input v-model.number="age" type="number">
+    </div>
+    <div id="app-7">
+        <ol>
+            <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+        </ol>
+    </div>
+    <script>
+        Vue.component('todo-item', {
+            props: ['todo'],
+            template: '<li>{{todo.text}}</li>'
+        });
+        var app7 = new Vue({
+            el: "#app-7",
+            data: {
+                groceryList: [{
+                        id: 0,
+                        text: '蔬菜'
+                    },
+                    {
+                        id: 1,
+                        text: '奶酪'
+                    },
+                    {
+                        id: 2,
+                        text: '其他什么人吃的东西'
+                    }
+                ]
+            }
+        });
+        var demo = new Vue({
+            el: "#demo",
+            data: {
+                message: "abcd 的 efg",
+                num: 5,
+                message1: 0,
+                age: '',
+                a: 1,
+                val1: 0,
+                val2: 0,
+                package: {
+                    count: 5,
+                    price: 5
+                },
+            },
+            computed: {
+                reverseText: function () {
+                    return this.message.split("").reverse().join("");
+                },
+                price: function () {
+                    return this.package.count * this.package.price
+                }
+                //ajax执行方式
+                //  this.$http.get(url).then(res=>{
+                //     this.imgs = res.data.lists
+                //     console.log(this.imgs)
+                // })
+            },
+            methods: {
+                reversedMessage() {
+                    return this.message.split("").reverse().join("");
+                    this.deb
+                },
+                add: function () {
+                    this.package.count++
+                },
+                getLists() {
+                    console.log(1111)
+                },
+                show() {
+                    console.log(this.val2)
+                }
+            },
+            beforeCreate() {
+                //this.getLists();// 
+            },
+            created() {
+                this.getLists()
+            },
+            watch: {
+                a: function (val, oldval) {
+                    this.message1 = "a的旧值为" + oldval + ",新值为" + val;
+                },
+                val1: function (val) {
+                    this.val1 = val;
+                    this.val2 = this.val1 * 1000;
+                }
+            }
+        })
+        //demo.$destroy();//我们常用来销毁一些监听事件及定时函数
+    </script>
+</body>
+
+</html>

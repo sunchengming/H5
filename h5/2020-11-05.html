@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>demo</title>
+</head>
+<body>
+    <input id="text" placeHolder="最大支持12个字节" maxlength="12" />
+    <script type="text/javascript">
+     var Str = {
+         byteLen : function (str){
+            //正则取到中文的个数，然后len*count+原来的长度。不用replace
+            str += '';
+            var tmp = str.match(/[^\x00-\xff]/g) || [];
+            return str.length + tmp.length;
+        },
+        getMaxlen : function(str,maxlen){
+            var sResult = '', L=0, i=0, stop = false, sChar;
+            if(str.replace(/[^\x00-\xff]/g,'xxx').length <= maxlen){
+                return str;
+            }
+            while(!stop){
+                sChar = str.charAt(i);
+                L+= sChar.match(/[^\x00-\xff]/) ? 2 : 1;
+                if(L > maxlen){
+                    stop = true;
+                }else{
+                    sResult+=sChar;
+                    i++;
+                }
+            }
+            return sResult;
+        }
+    };
+    var inputLock = false;
+    document.querySelector('#text').addEventListener('compositionstart', function(){
+        inputLock = true;
+    })
+    document.querySelector('#text').addEventListener('compositionend', function(){
+        inputLock = false;
+        var value = this.value,
+            maxlength = this.getAttribute('maxlength');
+        if(Str.byteLen(value) > maxlength){
+            this.value = Str.getMaxlen(value, maxlength);
+        }
+    })
+    document.querySelector('#text').addEventListener('input', function(){
+        if(!inputLock){
+            var value = this.value,
+                maxlength = this.getAttribute('maxlength');
+            if(Str.byteLen(value) > maxlength){
+                this.value = Str.getMaxlen(value, maxlength);
+            }
+        }
+    });
+    </script>
+</body>
+</html>

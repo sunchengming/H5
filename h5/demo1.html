@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+
+<div id="dv"><b>内容...</b></div>
+<input type="button" onclick="testCopy()" value="复制吧">
+   <!--  <div id="app">
+        <input type="text" id="txt">
+        <p id="show"></p>
+    </div> -->
+</body>
+<!-- <script type="text/javascript">
+    var obj = {}
+    Object.defineProperty(obj, 'txt', {
+        get: function () {
+            return obj
+        },
+        set: function (newValue) {
+        	if(newValue!=undefined){        		
+	            document.getElementById('txt').value = newValue
+	            document.getElementById('show').innerHTML = newValue
+        	}
+        }
+    })
+    document.addEventListener('keyup', function (e) {
+        obj.txt = e.target.value
+    })
+    $("#app").html("<div>aaa</div>")
+</script> -->
+ 
+<script language="javascript">   
+function testCopy()   
+{   
+var myobj=document.getElementById("dv");
+var mydata=myobj.innerHTML;
+ console.log(window)
+// window.clipboardData.setData("Text", mydata);
+}  
+  
+ 
+</script>   
+    
+</html>

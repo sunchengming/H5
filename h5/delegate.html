@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎来到蝴蝶教程</title>
+    //此版本是百度cdn 1.11.1，当然你可以使用更高的版本，从2.0版本以上的是不支持ie6-8的
+    <!-- <script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script> -->
+    <style>
+        .aaa {
+            color: red;
+        }
+
+        /* .aaa h4{
+            color: inherit;
+        } */
+        .box {
+            height: 300px;
+            width: 300px;
+            background: red;
+            display: grid;
+        }
+
+        .center {
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            align-self: center;
+            justify-self: center;
+        }
+
+        .wp {
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+
+        .box1 {
+            display: inline-block;
+        }
+
+        .wp1 {
+            width: 200px;
+            height: 200px;
+            background: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .a {
+            width: 0;
+            height: 0;
+            border-width: 100px;
+            border-style: solid;
+            border-color: transparent #0099CC transparent transparent;
+            transform: rotate(90deg);
+            /*顺时针旋转90°*/
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+    <input type="text" id="txt" placeholder="测试">
+    <p id="show"></p>
+</div>
+</body>
+<script type="text/javascript">
+    var obj = {}
+    Object.defineProperty(obj, 'txt', {
+        get: function () {
+            return obj
+        },
+        set: function (newValue) {
+            document.getElementById('txt').value = newValue
+            document.getElementById('show').innerHTML = newValue
+        }
+    })
+    document.addEventListener('keyup', function (e) {
+        obj.txt = e.target.value
+    })
+</script>
+<!-- <body>
+    <div class="a"></div>
+    <div class="wp">
+        <div class="box1">123123</div>
+    </div>
+    <div class="wp1">
+        <div class="box1">123123</div>
+    </div>
+    <div class="box">
+        <div class="center">123</div>
+    </div>
+    <div>
+        <p> </p>
+        <p>这个是段落2</p>
+        <p>这个是段落3</p>
+        <p>这个是段落4</p>
+        <p>这个是段落5</p>
+        <h1>这个是h1</h1>
+        <div class="bbb">
+            asda
+        </div>
+        <div class="aaa">
+            asdasd
+            <h4>asd</h4>
+            <div class="ccc" onclick="myMethod();">
+                <h4>1231231</h4>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("div").delegate("p,h1,.aaa", "click", function () {
+                $("p,h1,.aaa").css("background-color", "pink");
+            });
+        });
+        // $(document).ready(function(){
+        //     console.log(1111)
+        // })
+        $(document).ready(function () {
+            console.log(222)
+            $("div>.aaa>h4").css("color", "green");
+        })
+
+        function myMethod() {
+            console.log(123)
+        }
+    </script>
+</body> -->
+
+</html>
